@@ -115,77 +115,82 @@ Applied **7 major transformations** across multiple categories:
 
 ---
 
-## 📈 6️⃣ Visualizations & Insights
+📊 6. Sample Visualizations & Insights
 
-### **1️⃣ Total Sales & Profit by Region**
-```python
-trans_raw.groupby('Region')[['Sales','Profit']].sum().plot(kind='bar')
-West and East regions lead in both sales and profit volumes.
+To gain deeper insights, several simple visualizations were created:
+
+1️⃣ Sales and Profit by Region
+
+Shows regional revenue distribution. The West and East regions generated the most sales.
 
 2️⃣ Average Profit Margin by Category
-python
-Copy code
-trans_raw.groupby('Category')['Profit_Margin'].mean().plot(kind='bar')
-Technology products have the highest profitability margins.
+
+Technology products recorded the highest average profit margins.
 
 3️⃣ Monthly Sales Trend
-python
-Copy code
-trans_raw.groupby(trans_raw['Order Date'].dt.to_period('M'))['Sales'].sum().plot()
-Sales show seasonal peaks during end-of-year months.
+
+Displays seasonal fluctuations, with spikes in end-of-year sales periods.
 
 4️⃣ Distribution of Sales Tiers
-python
-Copy code
-trans_raw['Sales_Tier'].value_counts().plot(kind='bar')
-Most transactions fall under the Medium Sales Tier.
+
+Majority of transactions fall within the Medium sales tier.
 
 5️⃣ Average Shipping Duration by Region
-python
-Copy code
-trans_raw.groupby('Region')['Shipping_Duration_days'].mean().plot(kind='barh')
-Western regions have slightly faster shipping times on average.
 
-🧰 7️⃣ How to Run the Project
+Reveals differences in delivery times across regions — useful for supply chain analysis.
+
+⚙️ 7. How to Run the Project
 Requirements
-bash
-Copy code
+
+Install dependencies:
+
 pip install pandas numpy matplotlib jupyter
-Execution Steps
+
+Steps
+
 Open Jupyter Notebook.
 
-Run etl_extract.ipynb → performs extraction and profiling.
+Run etl_extract.ipynb → This loads, validates, and profiles the data.
 
-Run etl_transform.ipynb → applies all transformations.
+Run etl_transform.ipynb → This applies all transformations and saves new CSVs.
 
-(Optional) Run visualization cells for graphical insights.
+(Optional) Run the visualization cells to generate insights.
 
-All notebooks are fully re-runnable and require no manual edits.
+All notebooks are fully re-runnable and do not require manual intervention.
 
-💡 8️⃣ Key Learnings
-Understanding ETL workflows in a data warehousing context
+🧾 8. Key Learnings and Skills Demonstrated
 
-Performing data profiling and quality validation
+Understanding of ETL pipeline architecture (Extract & Transform phases).
 
-Applying cleaning, enrichment, and structural transformations
+Data profiling using Pandas (info(), describe(), and missing value checks).
 
-Building derived variables for analytical readiness
+Implementing data cleaning and enrichment transformations.
 
-Implementing data visualization for insight communication
+Creating derived variables for business analysis.
 
-Managing structured GitHub repositories for professional submissions
+Using Python visualization libraries for insight generation.
 
-🏁 9️⃣ Conclusion
-This project successfully demonstrates an end-to-end ETL pipeline using Python and Pandas.
-The transformed dataset is standardized, enriched, and analytics-ready — providing insights into sales performance, profitability, and logistics efficiency.
+Version control and project organization using GitHub.
 
-The final output serves as a robust foundation for future Load and OLAP phases in data warehousing.
+🏁 9. Conclusion
 
-🌐 🔟 Repository Information
-🧭 GitHub Repo Name: DSA2040A_ET_Exam_Peter_341
+This project successfully demonstrates the end-to-end data extraction and transformation process using Python and Pandas.
+The final transformed dataset is well-structured, consistent, and enriched with additional analytical features such as shipping duration, profit margin, and sales tier.
 
-📦 Contents:
+These transformations set the foundation for the “Load” phase, where the cleaned data could be integrated into a warehouse for advanced reporting and business intelligence.
 
+📎 10. Repository Information
+
+GitHub Repo Name:
+DSA2040A_ET_Exam_Peter_341
+
+Contents:
+
+Jupyter Notebooks for extraction and transformation
+
+Input and output CSV files
+
+Visualizations and documentation (this README)
 Jupyter notebooks for Extract and Transform phases
 
 Input & transformed CSV datasets
