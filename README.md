@@ -115,31 +115,15 @@ Applied **7 major transformations** across multiple categories:
 
 ---
 
-📊 6. Sample Visualizations & Insights
+## 📊 . Sample Visualizations & Insights
 
 To gain deeper insights, several simple visualizations were created:
 
-1️⃣ Sales and Profit by Region
-
-Shows regional revenue distribution. The West and East regions generated the most sales.
-
-2️⃣ Average Profit Margin by Category
-
-Technology products recorded the highest average profit margins.
-
-3️⃣ Monthly Sales Trend
-
-Displays seasonal fluctuations, with spikes in end-of-year sales periods.
-
-4️⃣ Distribution of Sales Tiers
-
-Majority of transactions fall within the Medium sales tier.
-
-5️⃣ Average Shipping Duration by Region
+ Sales and Profit by Region
 
 Reveals differences in delivery times across regions — useful for supply chain analysis.
 
-⚙️ 7. How to Run the Project
+## ⚙️ . How to Run the Project
 Requirements
 
 Install dependencies:
@@ -158,7 +142,7 @@ Run etl_transform.ipynb → This applies all transformations and saves new CSVs.
 
 All notebooks are fully re-runnable and do not require manual intervention.
 
-🧾 8. Key Learnings and Skills Demonstrated
+## 🧾 . Key Learnings and Skills Demonstrated
 
 Understanding of ETL pipeline architecture (Extract & Transform phases).
 
@@ -172,14 +156,14 @@ Using Python visualization libraries for insight generation.
 
 Version control and project organization using GitHub.
 
-🏁 9. Conclusion
+## 🏁 . Conclusion
 
 This project successfully demonstrates the end-to-end data extraction and transformation process using Python and Pandas.
 The final transformed dataset is well-structured, consistent, and enriched with additional analytical features such as shipping duration, profit margin, and sales tier.
 
 These transformations set the foundation for the “Load” phase, where the cleaned data could be integrated into a warehouse for advanced reporting and business intelligence.
 
-📎 10. Repository Information
+## 📎 . Repository Information
 
 GitHub Repo Name:
 DSA2040A_ET_Exam_Peter_341
