@@ -1,181 +1,193 @@
-## 📘 1. Project Overview
+# 🧠 Data Warehousing & Mining – ETL Project (DSA 2040A FS 2025)
 
-This project demonstrates the Extract and Transform phases of a complete ETL (Extract, Transform, Load) pipeline, applied to a real-world retail sales dataset.
+> 🧩 *An end-to-end Python ETL pipeline transforming raw retail sales data into clean, analytics-ready insights.*
 
-The objective was to:
+![Python](https://img.shields.io/badge/Python-3.10-blue?logo=python)
+![Pandas](https://img.shields.io/badge/Pandas-Data%20Processing-green?logo=pandas)
+![Matplotlib](https://img.shields.io/badge/Matplotlib-Visualization-orange?logo=plotly)
+![GitHub](https://img.shields.io/badge/Platform-GitHub-black?logo=github)
+![License](https://img.shields.io/badge/License-Academic-lightgrey)
 
-Extract and validate data from raw sources.
+---
 
-Identify and handle data quality issues.
+## 🗂️ Project Title
+### **Sales Transactions ETL Pipeline Using Python & Pandas**  
 
-Apply a variety of transformations (cleaning, standardization, enrichment, structural, and categorization).
+A complete Extract–Transform workflow applied to real-world retail data from Kaggle’s *Superstore Sales* dataset.  
+This project demonstrates data extraction, quality assessment, transformation, enrichment, and visualization in preparation for analytical use.
 
-Prepare the dataset for future analytical and data warehousing processes.
+---
 
-The entire workflow was implemented using Python, Pandas, and Jupyter Notebook, with the outputs organized into structured folders for reproducibility.
+## 🧾 1️⃣ Project Overview
+The objective of this project was to design and execute the **Extract** and **Transform** phases of an ETL pipeline.  
+The workflow loads, inspects, cleans, standardizes, and enriches a dataset containing retail sales transactions, preparing it for future analysis or data warehouse integration.
 
-## 💾 2. Data Source
+### ✅ Key Goals:
+- Load and inspect large-scale retail data  
+- Detect and document data quality issues  
+- Apply diverse transformations across multiple categories  
+- Generate clean, structured, and analytics-ready datasets  
 
-Dataset Used: Superstore Sales Dataset – Kaggle
+---
 
-Description:
-The Superstore dataset contains detailed sales transactions from a US-based retail store.
-It includes product, customer, shipping, and financial data across multiple regions and categories.
+## 💾 2️⃣ Dataset Description
 
-Size: ~10,000 rows × 21 columns
-Format: CSV (Raw_data.csv)
+**📍 Source:** [Superstore Sales Dataset – Kaggle](https://www.kaggle.com/datasets/vivek468/superstore-dataset-final)  
+**📊 Size:** ~10,000 rows × 21 columns  
+**📂 Format:** CSV (`Raw_data.csv`)
 
-Key Columns:
+**Main Features:**
+| Category | Example Columns | Description |
+|-----------|-----------------|--------------|
+| **Order Info** | `Order ID`, `Order Date`, `Ship Date`, `Ship Mode` | Purchase and shipping details |
+| **Customer Info** | `Customer ID`, `Customer Name`, `Segment`, `Region` | Customer demographics |
+| **Product Info** | `Product ID`, `Category`, `Sub-Category`, `Product Name` | Product classification |
+| **Sales Metrics** | `Sales`, `Quantity`, `Discount`, `Profit` | Transactional performance metrics |
 
-Order Information: Order ID, Order Date, Ship Date, Ship Mode
+---
 
-Customer Information: Customer ID, Customer Name, Segment, Region, Country
+## ⚙️ 3️⃣ Tools & Technologies
 
-Product Details: Product ID, Category, Sub-Category, Product Name
+| Tool | Purpose |
+|------|----------|
+| 🐍 **Python (Pandas, NumPy)** | Data manipulation and transformation |
+| 📊 **Matplotlib** | Data visualization and insights |
+| 🧮 **Jupyter Notebook** | Interactive documentation and reproducibility |
+| 💻 **Git & GitHub** | Version control and public submission |
 
-Sales Metrics: Sales, Quantity, Discount, Profit
+---
 
-## 🧰 3. Tools and Technologies
-Tool	Purpose
-Python (Pandas, NumPy)	Data manipulation and transformations
-Matplotlib	Data visualization
-Jupyter Notebook	Interactive coding and documentation
-Git & GitHub	Version control and project submission
-## 🗂️ 4. Project Folder Structure
+## 🧭 4️⃣ Project Folder Structure
+
 ET_Exam_Peter_341/
 ├── data/
-│   ├── raw_data.csv
-│   ├── incremental_data.csv
-│   ├── validated_full.csv
+│ ├── raw_data.csv
+│ ├── incremental_data.csv
+│ ├── validated_full.csv
 ├── transformed/
-│   ├── transformed_full.csv
-│   ├── transformed_incremental.csv
+│ ├── transformed_full.csv
+│ ├── transformed_incremental.csv
 ├── etl_extract.ipynb
 ├── etl_transform.ipynb
 ├── README.md
 └── .gitignore
 
-## 🔍 5. ETL Process Summary
-A. Extract Phase (etl_extract.ipynb)
+yaml
+Copy code
 
-Performed the following steps:
+---
 
-Loaded both the main dataset (raw_data.csv) and incremental dataset (incremental_data.csv) using Pandas.
+## 🔍 5️⃣ ETL Workflow Summary
 
-Displayed .head(), .info(), and .describe() for initial inspection.
+### **A. 🧮 Extract Phase (`etl_extract.ipynb`)**
+**Steps Performed:**
+1. Loaded `raw_data.csv` and `incremental_data.csv` using Pandas.  
+2. Conducted exploratory profiling using `.head()`, `.info()`, and `.describe()`.  
+3. Checked for:
+   - ✅ Missing values → None found  
+   - ✅ Duplicates → None found  
+   - ✅ Invalid numerical values → None found  
+4. Verified proper column data types (dates, numbers, text).  
+5. Merged datasets and saved validated copy as `validated_full.csv`.
 
-Checked for:
+**Result:**  
+> Dataset was clean and consistent — ready for transformation.
 
-Missing values → None found
+---
 
-Duplicates → None found
+### **B. 🔧 Transform Phase (`etl_transform.ipynb`)**
 
-Invalid or negative numerical values → None found
+Applied **7 major transformations** across multiple categories:
 
-Verified column data types (dates, numeric, and categorical).
+| # | Transformation | Category | Description |
+|---|----------------|-----------|--------------|
+| 1️⃣ | Convert `Order Date` & `Ship Date` → datetime | Standardization | Enables date operations |
+| 2️⃣ | Create `Shipping_Duration_days` | Enrichment | Days between order and delivery |
+| 3️⃣ | Compute `Profit_Margin = Profit / Sales` | Enrichment | Adds business profitability metric |
+| 4️⃣ | Convert `Postal Code` → string | Structural | Preserves leading zeros |
+| 5️⃣ | Clean text fields (trim spaces) | Cleaning | Improves consistency |
+| 6️⃣ | Create `Sales_Tier` (Low/Medium/High) | Categorization | Sales segmentation using quantiles |
+| 7️⃣ | Derive `Revenue_per_Item = Sales / Quantity` | Enrichment | Per-item revenue insight |
 
-Merged the raw and incremental datasets for validation.
+**Files Generated:**
+- 📄 `transformed_full.csv` — Transformed main dataset  
+- 📄 `transformed_incremental.csv` — Transformed incremental dataset  
 
-Saved a clean version as validated_full.csv.
+---
 
-Key Finding:
-The dataset was well-structured and clean, requiring minimal corrections. The only standardization needed was converting Ship Date to a proper datetime format.
+## 📈 6️⃣ Visualizations & Insights
 
-B. Transform Phase (etl_transform.ipynb)
-
-Applied 7 major transformations (covering ≥5 categories):
-
-#	Transformation	Type	Description
-1	Convert Order Date & Ship Date to datetime	Standardization	Enables date arithmetic
-2	Create Shipping_Duration_days	Enrichment	Calculates delivery time in days
-3	Calculate Profit_Margin = Profit / Sales	Enrichment	Adds business profitability insight
-4	Convert Postal Code to string	Structural	Preserves leading zeros
-5	Trim whitespace in text fields	Cleaning	Fixes inconsistent text formatting
-6	Categorize Sales_Tier (Low, Medium, High)	Categorization	Segments transactions by sales level
-7	Derive Revenue_per_Item = Sales / Quantity	Enrichment	Provides per-unit sales insight
-
-Results Saved As:
-
-transformed_full.csv – complete dataset after transformations
-
-transformed_incremental.csv – transformed subset of new incremental data
-
-Outcome:
-The transformed dataset is standardized, enriched with new features, and fully ready for analytical modeling or loading into a data warehouse.
-
-📊 6. Sample Visualizations & Insights
-
-To gain deeper insights, several simple visualizations were created:
-
-1️⃣ Sales and Profit by Region
-
-Shows regional revenue distribution. The West and East regions generated the most sales.
+### **1️⃣ Total Sales & Profit by Region**
+```python
+trans_raw.groupby('Region')[['Sales','Profit']].sum().plot(kind='bar')
+West and East regions lead in both sales and profit volumes.
 
 2️⃣ Average Profit Margin by Category
-
-Technology products recorded the highest average profit margins.
+python
+Copy code
+trans_raw.groupby('Category')['Profit_Margin'].mean().plot(kind='bar')
+Technology products have the highest profitability margins.
 
 3️⃣ Monthly Sales Trend
-
-Displays seasonal fluctuations, with spikes in end-of-year sales periods.
+python
+Copy code
+trans_raw.groupby(trans_raw['Order Date'].dt.to_period('M'))['Sales'].sum().plot()
+Sales show seasonal peaks during end-of-year months.
 
 4️⃣ Distribution of Sales Tiers
-
-Majority of transactions fall within the Medium sales tier.
+python
+Copy code
+trans_raw['Sales_Tier'].value_counts().plot(kind='bar')
+Most transactions fall under the Medium Sales Tier.
 
 5️⃣ Average Shipping Duration by Region
+python
+Copy code
+trans_raw.groupby('Region')['Shipping_Duration_days'].mean().plot(kind='barh')
+Western regions have slightly faster shipping times on average.
 
-Reveals differences in delivery times across regions — useful for supply chain analysis.
-
-## ⚙️ 7. How to Run the Project
+🧰 7️⃣ How to Run the Project
 Requirements
-
-Install dependencies:
-
+bash
+Copy code
 pip install pandas numpy matplotlib jupyter
-
-Steps
-
+Execution Steps
 Open Jupyter Notebook.
 
-Run etl_extract.ipynb → This loads, validates, and profiles the data.
+Run etl_extract.ipynb → performs extraction and profiling.
 
-Run etl_transform.ipynb → This applies all transformations and saves new CSVs.
+Run etl_transform.ipynb → applies all transformations.
 
-(Optional) Run the visualization cells to generate insights.
+(Optional) Run visualization cells for graphical insights.
 
-All notebooks are fully re-runnable and do not require manual intervention.
+All notebooks are fully re-runnable and require no manual edits.
 
-## 🧾 8. Key Learnings and Skills Demonstrated
+💡 8️⃣ Key Learnings
+Understanding ETL workflows in a data warehousing context
 
-Understanding of ETL pipeline architecture (Extract & Transform phases).
+Performing data profiling and quality validation
 
-Data profiling using Pandas (info(), describe(), and missing value checks).
+Applying cleaning, enrichment, and structural transformations
 
-Implementing data cleaning and enrichment transformations.
+Building derived variables for analytical readiness
 
-Creating derived variables for business analysis.
+Implementing data visualization for insight communication
 
-Using Python visualization libraries for insight generation.
+Managing structured GitHub repositories for professional submissions
 
-Version control and project organization using GitHub.
+🏁 9️⃣ Conclusion
+This project successfully demonstrates an end-to-end ETL pipeline using Python and Pandas.
+The transformed dataset is standardized, enriched, and analytics-ready — providing insights into sales performance, profitability, and logistics efficiency.
 
-## 🏁 9. Conclusion
+The final output serves as a robust foundation for future Load and OLAP phases in data warehousing.
 
-This project successfully demonstrates the end-to-end data extraction and transformation process using Python and Pandas.
-The final transformed dataset is well-structured, consistent, and enriched with additional analytical features such as shipping duration, profit margin, and sales tier.
+🌐 🔟 Repository Information
+🧭 GitHub Repo Name: DSA2040A_ET_Exam_Peter_341
 
-These transformations set the foundation for the “Load” phase, where the cleaned data could be integrated into a warehouse for advanced reporting and business intelligence.
+📦 Contents:
 
-## 📎 10. Repository Information
+Jupyter notebooks for Extract and Transform phases
 
-GitHub Repo Name:
-DSA2040A_ET_Exam_Peter_341
+Input & transformed CSV datasets
 
-Contents:
-
-Jupyter Notebooks for extraction and transformation
-
-Input and output CSV files
-
-Visualizations and documentation (this README)
+README documentation and visualization insights
